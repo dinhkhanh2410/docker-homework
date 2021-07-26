@@ -18,7 +18,7 @@ services:
             context: .
             dockerfile: Dockerfile
         depends_on: 
-            - postgresql01
+            - postgresql
         env_file: 
             - config/app/.env
         ports: 
