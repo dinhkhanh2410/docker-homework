@@ -1,0 +1,25 @@
+version: '3'
+
+services: 
+    postgresql01:
+        image: postgres:latest
+        volumes: 
+            - config/db/init.d:/docker-entrypoint-initdb.d/
+            - postgresdb:/var/lib/postgresql/data
+        environment: 
+            env_file: 
+                - config/db/env
+        networks: 
+            - bookapi
+
+    bookservice01:
+        build: 
+            context: .
+            dockerfile: Dockerfile
+        depends_on: 
+            - postgresql01
+        environment: 
+            env_file: 
+                - config/app/.env
+        ports: 
+            - 8083:8000
