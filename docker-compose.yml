@@ -1,7 +1,7 @@
 version: '3'
 
 services: 
-    postgresql01:
+    postgresql:
         image: postgres:latest
         volumes: 
             - ./config/db/init.sql:/docker-entrypoint-initdb.d/init.sql
