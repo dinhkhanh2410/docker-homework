@@ -4,7 +4,7 @@ services:
     postgresql01:
         image: postgres:latest
         volumes: 
-            - config/db/init.d:/docker-entrypoint-initdb.d/
+            - config/db/init.sql:/docker-entrypoint-initdb.d/
             - postgresdb:/var/lib/postgresql/data
         env_file: 
             - config/db/env
