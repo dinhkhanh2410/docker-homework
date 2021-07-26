@@ -8,6 +8,8 @@ services:
             - postgresdb:/var/lib/postgresql/data
         env_file: 
             - config/db/env
+        ports: 
+            - 5432
         networks: 
             - bookapi
 
