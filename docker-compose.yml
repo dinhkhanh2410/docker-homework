@@ -6,9 +6,8 @@ services:
         volumes: 
             - config/db/init.d:/docker-entrypoint-initdb.d/
             - postgresdb:/var/lib/postgresql/data
-        environment: 
-            env_file: 
-                - config/db/env
+        env_file: 
+            - config/db/env
         networks: 
             - bookapi
 
@@ -18,8 +17,18 @@ services:
             dockerfile: Dockerfile
         depends_on: 
             - postgresql01
-        environment: 
-            env_file: 
-                - config/app/.env
+        env_file: 
+            - config/app/.env
         ports: 
             - 8083:8000
+        networks: 
+            - bookapi
+
+networks: 
+    bookapi:
+        driver: bridge
+
+volumes: 
+    postgresdb:
+
+
